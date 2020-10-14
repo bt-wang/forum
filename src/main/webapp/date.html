@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="script/echarts.js"></script>
+		
+		<script type="text/javascript"  src="script/jquery-3.3.1.min.js"></script>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="date" style="width: 800px;height:300px;"></div>
+		    
+		    <script type="text/javascript">
+		        
+		        var myChart = echarts.init(document.getElementById('date'));
+		         // 显示标题，图例和空的坐标轴
+		         myChart.setOption({
+		             title: {
+		                 text: '年度订单情况汇总'
+		             },
+		             tooltip: {},
+		             legend: {
+		                 data:['订单']
+		             },
+		             xAxis: {
+		                 data: []
+		             },
+		             yAxis: {},
+		             series: [{
+		                 name: '订单',
+		                 type: 'bar',
+		                 data: []
+		             }]
+		         });
+		         
+		         myChart.showLoading();    //数据加载完之前先显示一段简单的loading动画
+		         
+		         var names=[];    //类别数组（实际用来盛放X轴坐标值）
+		         var nums=[];    //销量数组（实际用来盛放Y坐标值）
+		         
+		         $.ajax({
+		         type : "post",
+		         async : false,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+		         url : "/cloudproduce/seachdate",    //请求发送到TestServlet处
+		         data : {},
+		         dataType : "json",        //返回数据形式为json
+		         success : function(result) {
+		             //请求成功时执行该函数内容，result即为服务器返回的json对象
+		             if (result) {
+		                    for(var i=0;i<result.name.length;i++){       
+		                       names.push(result.name[i]);    //挨个取出类别并填入类别数组
+							  
+		                     }
+		                    for(var i=0;i<result.num.length;i++){       
+		                        nums.push(result.num[i]);    //挨个取出销量并填入销量数组
+		                      }
+		                    myChart.hideLoading();    //隐藏加载动画
+		                    myChart.setOption({        //加载数据图表
+		                        xAxis: {
+		                            data: names
+		                        },
+		                        series: [{
+		                            // 根据名字对应到相应的系列
+		                            name: '订单',
+		                            data: nums
+		                        }]
+		                    });
+		                    
+		             }
+		         else{
+					
+				 }
+		        },
+		         error : function(errorMsg) {
+		             //请求失败时执行该函数
+		         alert("图表请求数据失败!");
+		         myChart.hideLoading();
+		         }
+		    })
+		
+		         
+		    </script>
+		
+		
+		
+		
+		
+		
+		<div id="echartsPie" style="width: 400px; height: 300px;"></div>
+		    
+		    
+		    <script type="text/javascript">  
+		        var echartsPie = echarts.init(document.getElementById('echartsPie'));  
+		        
+		        // $.get('js/data.json').done(function (data) {
+		            $.post("/cloudproduce/seachdate", function(data) {
+		             //alert(datas);
+		/*             console.log(datas);
+		              var data= $.parseJSON(datas);   */ //将传递过来的json字符串转化为对象
+		             //alert(data);
+		//              console.log(data);
+		             var servicedata=[];
+		             for(var i=0;i<data.name.length;i++){
+		                 var obj=new Object();
+		                 obj.name=data.name[i]; 
+		                 obj.value=data.num[i];
+		                 servicedata[i]=obj;
+		                 
+		             }
+		            // alert(servicedata);
+		           
+		            echartsPie.setOption({
+		                title : {  
+		                    text: '年度订单情况汇总',  
+		                    subtext: '饼图',  
+		                    x:'center'  
+		                },  
+		                tooltip : {  
+		                    trigger: 'item',  
+		                    formatter: "{b} <br/>{c} : {d} %"      ,//a 系列名称，b 数据项名称，c 数值，d 百分比
+							color:'#000', //提示框的背景色
+							            textStyle:{ //提示的字体样式
+							                color:"black",
+							            }
+		                },  
+		                legend: {  
+		                    orient : 'vertical',  
+		                    x : 'left',  
+		                    data:data.name  ,
+							textStyle:{    //图例文字的样式
+							                color:'#333',  //文字颜色
+							                fontSize:12    //文字大小
+							            }
+		                },
+		                toolbox: {  
+		                    show : true,  
+		                    feature : {  
+		                        mark : {show: true},  
+		                        dataView : {show: true, readOnly: false},  
+		                        magicType : {  
+		                            show: true,   
+		                            type: ['pie', 'funnel'],  
+		                            option: {  
+		                                funnel: {  
+		                                    x: '25%',  
+		                                    width: '50%',  
+		                                    funnelAlign: 'left',  
+		                                    max: 1548  
+		                                }  
+		                            }  
+		                        },  
+		                        restore : {show: true},  
+		                        saveAsImage : {show: false}  
+		                    }  
+		                },  
+		                calculable : true,  
+		                series : [  
+		                    {  
+		                        name:'年度订单情况汇总',  
+		                        type:'pie',  
+		                        radius : '55%',//饼图的半径大小  
+							//	 radius: ['30%', '45%'], 
+		                        center: ['50%', '60%'],//饼图的位置  
+		                 //       color:['#D1FBEF','#F9D858','#4CD0DD','#DF86F0','#F5A7C1'],
+		                                       label: {
+		                                           normal: {  //正常的样式
+		                                               show: true,
+		                                               position: 'left'
+		                                           },
+		                                           emphasis: { //选中时候的样式
+		                                               show: true,
+		                                               textStyle: {
+		                                                   fontSize: '20',
+		                                                   fontWeight: 'bold'
+		                                               }
+		                                           }
+		                                       },  //提示文字
+		                                       labelLine: {
+		                                           normal: {
+		                                               show: false
+		                                           }
+		                                       },
+								data:servicedata
+		                    }  
+		                ]    
+		            })
+		    })
+		    
+		</script>  
+		
+	</body>
+</html>

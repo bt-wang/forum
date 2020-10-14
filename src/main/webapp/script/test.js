@@ -1,0 +1,4 @@
+/**
+ * 
+ */
+ $("#txtPWD").capsLockTip();

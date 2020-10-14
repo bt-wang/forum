@@ -1,0 +1,26 @@
+
+
+
+#resultdiv{
+    margin-top: 20px;
+    display: none;
+}
+
+#pagectrl{
+    font-size: 0.8em;
+    text-align: center;
+    display: none;
+}
+
+
+#gopage{
+    width: 30px;
+}
+
+#searchBtn{
+    display: none;
+}
+/*
+ #okbtn{
+     display:none;
+     }

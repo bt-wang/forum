@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <!-- 引入外部js文件，先引入jQuery再引入自己的 -->
+    <link rel="stylesheet" href="style/modpwd.css">
+    <script type="text/javascript" src="script/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="script/modpwd.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body background="img/09.jpeg">
+
+
+
+    <div class="container">
+        <!-- <div class="form row"> -->
+                <h3 style="color: white; margin-left: 20px">修改密码</h3>
+                <div class="col-md-9">
+            <form class="form-horizontal col-md-offset-0"  id="register_form">
+            <br>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary btn-lg pull-left">
+
+                            <table>
+                                <tr>
+                                    <td><span class="glyphicon glyphicon-user">用户ID：</span></td>
+                                    <td>
+                                        <div id="curid"></div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </button>
+                        <button type="button" class="btn btn-primary btn-lg pull-left">
+
+                            <table>
+                                <tr>
+                                    <td><span class="glyphicon glyphicon-user">用户名：</span></td>
+                                    <td>
+                                        <div id="curname"></div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </button>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control required" type="password" placeholder="请输入原密码" id="userpwd" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control required" type="password" placeholder="请输入新密码" id="userpwd1" />
+                        <div id="msg1"></div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control required" type="password" placeholder="确认密码" id="userpwd2" />
+                        <div id="msg2"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="button" class="btn btn-success pull-right" id="ok" value="保存" />
+                        <input type="button" onclick="javascript:history.back();" class="btn btn-info pull-left" id="cancel" value="取消" />
+                    </div>
+            </form>
+                </div>
+        <!-- </div> -->
+    </div>
+
+
+
+
+
+</body>
+
+</html>

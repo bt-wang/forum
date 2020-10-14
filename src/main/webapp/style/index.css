@@ -1,0 +1,27 @@
+@charset "UTF-8";
+#resulttable{
+    margin: 0px auto;
+    border: 1px black solid;
+    border-collapse: collapse；
+    display: none;
+}
+
+//表格中单元格的样式
+#resulttable th, #resulttable td{
+    border: 1px black solid;
+    padding: 100px;
+}
+
+#resulttable th{
+    background-color: green;
+}
+
+#resultdiv{
+    margin: 20px auto 0px;
+}
+
+#pagectrl{
+    font-size: 0.8em;
+    text-align: center;
+    display: none;
+}
