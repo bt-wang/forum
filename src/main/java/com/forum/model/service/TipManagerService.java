@@ -21,18 +21,9 @@ public class TipManagerService {
 	private TipMapper tm;
 
 	//查询,用于显示
-	public PageInfo<Tip> searchTips(Tip cond, int pageNum, int pageSize){
+	public PageInfo<Tip> searchTips(int pageNum, int pageSize){
 		TipExample example = new TipExample();
-		Criteria tc = example.createCriteria();
-		if(null != cond.getTipuserid()) {
-			tc.andTipidEqualTo(cond.getTipuserid());
-		}
-		if(null != cond.getTipid()) {
-			tc.andTipidEqualTo(cond.getTipid());
-		}
-		if(null != cond.getTiptime()) {
-			tc.andTiptimeEqualTo(cond.getTiptime());
-		}
+		Criteria tc = example.createCriteria();		
 		PageHelper.startPage(pageNum, pageSize);
 		List<Tip> list = tm.selectByExample(example);
 		return new PageInfo<Tip>(list);

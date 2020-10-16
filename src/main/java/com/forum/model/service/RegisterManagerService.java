@@ -24,12 +24,7 @@ public class RegisterManagerService {
 	List<Userinfo> list = usermapper.selectByExample(example);	
 	if(list.size()==0) {
 		int i=usermapper.insert(user);
-		if(i>0) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return true;
 	}
 	else {
 		return false;

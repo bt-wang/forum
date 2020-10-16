@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.forum.model.entity.Tip;
 import com.forum.model.entity.Userinfo;
 import com.forum.model.service.TipManagerService;
+import com.github.pagehelper.PageInfo;
 
 /**
  * @author ltc
@@ -30,7 +31,10 @@ public class TipManagerController {
 //	public Userinfo doGetCurrentUserinfo(HttpSession session) {
 //		return (Userinfo)session.getAttribute(CURRENT_USER);
 //	}
-	
+	@RequestMapping("/getalltips")
+	public  PageInfo<Tip> doSearchTips(int pageNum, int pageSize){
+		return service.searchTips(pageNum, pageSize);
+	}
 	@RequestMapping("/addtip")
 	/**
 	 *	我写的时候是希望前端可以不用考虑session，发帖自动只发当前用户的帖子

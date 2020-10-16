@@ -9,7 +9,7 @@
     <script src="script/jquery-3.3.1.min.js"></script>
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
    	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="script/mainshow.js"></script>
+    <script src="script/square.js"></script>
     <script src="script/koala-1.1.1.js"></script>
 	</head>
 	<body background="img/08.jpg">
@@ -68,74 +68,117 @@
 					
 					
 					
-					
+				<div id="tiptable">
 					<div class="media well">
-						 <a href="#" class="pull-left"><img src="" class="media-object" alt='' /></a>
-						<div class="media-body">
+						
+						
 							<h4 class="media-heading">
 								0000
 							</h4>
 							<div>
-								111111
+								22222222222222222222222
 							</div>
-						</div>
+						
 					</div>
 					
 					<div class="media well">
-						 <a href="#" class="pull-left"><img src="" class="media-object" alt='' /></a>
-						<div class="media-body">
+						
+						
 							<h4 class="media-heading">
 								8888
 							</h4>
 							<div>
 								111111
 							</div>
-						</div>
+						
 					</div>
 					
 					<div class="media well">
-						 <a href="#" class="pull-left"><img src="" class="media-object" alt='' /></a>
-						<div class="media-body">
+						
+						
 							<h4 class="media-heading">
 								8888
 							</h4>
 							<div>
 								111111
 							</div>
-						</div>
+						
 					</div>
 		
-		
+				</div>	
 		
 				</div>
 			</div>
-			<div class="row clearfix">
-				<div class="col-md-12 column">
-					<ul class="pagination">
-						<li>
-							 <a href="#">Prev</a>
-						</li>
-						<li>
-							 <a href="#">1</a>
-						</li>
-						<li>
-							 <a href="#">2</a>
-						</li>
-						<li>
-							 <a href="#">3</a>
-						</li>
-						<li>
-							 <a href="#">4</a>
-						</li>
-						<li>
-							 <a href="#">5</a>
-						</li>
-						<li>
-							 <a href="#">Next</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+			
+			
+			<input type="hidden" name="pageNum" id="pageNum" value="1">
+				<input type="hidden" name="pageSize" id="pageSize" value="3">
+		<div id="pagectrl" class="pagination">
+		    <div class="container">
+		        <div class="row clearfix">
+		            <div class="col-md-2 column"></div>
+		            <div class="col-md-3 column">
+		                <div style="padding: 20px;">
+		                    <a style="font-size: 15px">共<span id="total"></span>条 <span class="glyphicon glyphicon-th-list"></span></a>&nbsp;
+		                    <a style="font-size: 15px">共<span id="pages"></span>页 <span class="glyphicon glyphicon-file"></span></a>&nbsp;
+		                    <a style="font-size: 15px">第<span id="curpage"></span>页 <span class="glyphicon glyphicon-list-alt"></span></a>&nbsp;
+		                </div>
+		            </div>
+		            <div class="col-md-2 column col-md-offset-1">
+		
+		                <ul class="pagination">
+		                    <li><a href="javascript:void(0)" style="font-size: 15px">&lt;&lt;</a></li>
+		                </ul>
+		                <ul class="pagination">
+		                    <li><a href="javascript:void(0)" id="prePage" style="font-size: 15px">&lt;</a></li>
+		                    <li><span id="prePageSpan" style="font-size: 15px">&lt;</span></li>
+		                </ul>
+		
+		
+		                <ul class="pagination">
+		                    <li><a href="javascript:void(0)" id="nextPage" style="font-size: 15px">&gt;</a></li>
+		                    <li><span id="nextPageSpan" style="font-size: 15px">&gt;</span></li>
+		                </ul>
+		                <ul class="pagination">
+		                    <li><a href="javascript:void(0)" style="font-size: 15px">&gt;&gt;</a></li>
+		                </ul>
+		
+		            </div>
+		
+		
+		
+		
+		
+		
+		
+		        <!--    <div class="col-md-3 column ">
+		                <div style="padding: 20px 100px 10px;">
+		                    <form class="bs-example bs-example-form" role="form">
+		                        <div class="row">
+		
+		                            <div class="col-lg-6">
+		                                <div class="input-group">
+		                                    <input type="number" class="form-control" id="gopage" min="1" style="width:80px">
+		                                    <span class="input-group-btn">
+		                                        <button href="javascript:void(0)" id="goBtn" class="btn btn-default" type="button" style="color: rgb(0, 100, 255);">Go!</button>
+		                                    </span>
+		                                </div>
+		                        </div>
+		                    </form>
+		                </div>
+		            </div> -->
+		
+		
+		        </div>
+		    </div>
+		</div>
+		
+		<div class="col-md-2 column"></div>
+		
+		
+		
+		
+		
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 				</div>
