@@ -1,0 +1,24 @@
+/*表格间隔设置*/
+
+
+/*跳转框设置*/
+#gopage{
+    width: 30px;
+}
+/*分页按钮设置*/
+#prePageSpan,#nextPageSpan{
+    font-size:0.8em; 
+}
+/*两种按钮的配置*/
+#hidebutton{
+    display: none;
+}
+.drag{
+	z-index: 99;
+	background: #e2dedc;
+	display: none;
+	top: 100px;
+	left: 100px;
+	padding: 0px;
+	width: 400px;
+}

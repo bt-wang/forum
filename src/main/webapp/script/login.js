@@ -114,6 +114,7 @@ $(function(){
 			$.post("/forum/register","username="+registerusername+"&userpassword="+registeruserpwd+"&userbirthday="+registeruserbirthday+"&usersex="+registersex+"&userimage="+registerFile+"&useremail="+registeremail,function(data){
 				 if(data){
 				 	alert("注册成功");
+					$("#tologin").click();
 				}
 				 else{
 					alert("注册失败");
