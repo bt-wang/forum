@@ -6,7 +6,7 @@ $(function () {
     $("#ok").attr("disabled", true);
     $("#userpwd1").blur(function () {
         var pwd = $(this).val();
-        var r = /^(\w){6,20}$/;
+        var r = /^(\w){3,20}$/;
         if (r.exec(pwd)) {
             $("#msg1").show().css("color", "green").html("该密码可用").fadeOut(2000);
             $("#userpwd2").mouseout(function () {
@@ -20,7 +20,7 @@ $(function () {
             })
         } else {
             $("#userpwd2").unbind("mouseout");
-            $("#msg1").show().css("color", "red").html("只能输入6-20个字母、数字、下划线").fadeOut(2000);
+            $("#msg1").show().css("color", "red").html("只能输入3-20个字母、数字、下划线").fadeOut(2000);
             $("#ok").attr("disabled", true);
         }
     })

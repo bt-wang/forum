@@ -216,11 +216,11 @@
 						</div>
 						<div class="form-group">
 						    <label for="">电子邮箱</label>
-						    <input class="form-control" type="email" placeholder="email" id="registeremail"><span id="registeremailcheck"></span>
+						    <input class="form-control" type="email" placeholder="email" id="registeremail">
 						</div>
 						<div class="form-group">
 						    <label for="">密码</label>
-						    <input class="form-control" type="password" placeholder="password" id="registeruserpwd"><span id="registeruserpwdcheck"></span><span style="display:none;">大写锁定键被按下，请注意大小写</span>
+						    <input class="form-control" type="password" placeholder="password" id="registeruserpwd"><span style="display:none;">大写锁定键被按下，请注意大小写</span>
 						</div>
 <script type="text/javascript">
 //<![CDATA[
@@ -258,7 +258,7 @@ document.getElementById('registeruserpwd').onkeypress = detectCapsLock;
                             <button class="btn btn-danger" data-dismiss="modal" style="background-color: #fb5e5999;border: 0px solid transparent;" id="registerno">取消</button>
                         </div>
                         <a href="" data-toggle="modal" data-dismiss="modal" data-target="#login">
-                            <font id="tologin" style="font-size: 13px;">已有账号？点我登录</font>
+                            <font style="font-size: 13px;">已有账号？点我登录</font>
                         </a>
                     </form>
 					
@@ -335,9 +335,23 @@ document.getElementById('registeruserpwd').onkeypress = detectCapsLock;
                             <label for="">用户名</label>
                             <input class="form-control" type="text" placeholder="username" id="loginusername">
                         </div>
+        <script>
+            window.onload=function(){
+                var userbtn=document.getElementById("userbtn");
+                var userpass=document.getElementById("userloginpassword");
+                userbtn.onmousedown=function(){
+                	userpass.type="text"
+                };
+                userbtn.onmouseup=btn.onmouseout=function(){
+                	userpass.type="password"
+                }
+            }
+        </script>
                         <div class="form-group">
                             <label for="">密码</label>
-                            <input class="form-control" type="password" placeholder="userpassword" id="loginuserpwd"><span style="display:none;">大写锁定键被按下，请注意大小写</span>
+                            <input class="form-control" type="password" placeholder="password" id="userloginpassword"><span style="display:none;">大写锁定键被按下，请注意大小写</span>
+                            
+        <input type="button" style="color:blue;" name="userbtn" id="userbtn"  value="按住显示密码" />
                         </div>
 <script type="text/javascript">
 //<![CDATA[
@@ -353,7 +367,7 @@ function  detectCapsLock(event){
      ){oTip.style.display = '';}
      else{oTip.style.display  =  'none';}
 }
-document.getElementById('loginuserpwd').onkeypress = detectCapsLock;
+document.getElementById('userloginpassword').onkeypress = detectCapsLock;
 //]]>
 </script>
                         <div class="text-right">
@@ -365,10 +379,10 @@ document.getElementById('loginuserpwd').onkeypress = detectCapsLock;
                         </a>
 						<br>
                         <a href="" data-toggle="modal" data-dismiss="modal" data-target="#forget">
-                            <font style="font-size: 13px;">忘记密码</font>
+                            <font style="font-size: 13px;">脑子坏了，密码忘了</font>
                         </a>
 						<br>
-						<a href="squareyouke.html">
+						<a href="square.html">
 							<font style="font-size: 13px;">以游客身份访问</font>
 						</a>
                     </form>
@@ -395,11 +409,50 @@ document.getElementById('loginuserpwd').onkeypress = detectCapsLock;
 						    <label for="">用户名</label>
 						    <input class="form-control" type="text" placeholder="username" id="adminloginusername">
 						</div>
-					
-						<div class="form-group">
-						    <label for="">密码</label>
-						    <input class="form-control" type="password" placeholder="password" id="adminloginpassword">
-						</div>
+        <script>
+            window.onload=function(){
+                var userbtn=document.getElementById("userbtn");
+                var userpass=document.getElementById("userloginpassword");
+                userbtn.onmousedown=function(){
+                	userpass.type="text"
+                };
+                userbtn.onmouseup=userbtn.onmouseout=function(){
+                	userpass.type="password"
+                }
+            
+                var btn=document.getElementById("adminbtn");
+                var pass=document.getElementById("adminloginpassword");
+                btn.onmousedown=function(){
+                    pass.type="text"
+                };
+                btn.onmouseup=btn.onmouseout=function(){
+                    pass.type="password"
+                }
+            }
+        </script>
+                        <div class="form-group">
+                            <label for="">密码</label>
+                            <input class="form-control" type="password" placeholder="password" id="adminloginpassword"><span style="display:none;">大写锁定键被按下，请注意大小写</span>
+                            
+        <input type="button" style="color: blue;" name="" id="adminbtn"  value="按住显示密码" />
+                        </div>
+<script type="text/javascript">
+//<![CDATA[
+function  detectCapsLock(event){
+    var e = event||window.event;
+    var o = e.target||e.srcElement;
+    var oTip = o.nextSibling;
+    var keyCode  =  e.keyCode||e.which; // 按键的keyCode
+    var isShift  =  e.shiftKey ||(keyCode  ==   16 ) || false ; // shift键是否按住
+     if (
+     ((keyCode >=   65   &&  keyCode  <=   90 )  &&   !isShift) // Caps Lock 打开，且没有按住shift键
+     || ((keyCode >=   97   &&  keyCode  <=   122 )  &&  isShift)// Caps Lock 打开，且按住shift键
+     ){oTip.style.display = '';}
+     else{oTip.style.display  =  'none';}
+}
+document.getElementById('adminloginpassword').onkeypress = detectCapsLock;
+//]]>
+</script>
 						
 	                    <div class="text-right">
 	                        <button class="btn btn-primary" type="submit" style="background-color: #3a8cd2b3;border: 0px solid transparent;" id="adminloginok">确定</button>

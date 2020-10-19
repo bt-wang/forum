@@ -31,7 +31,7 @@ $(function(){
 	
 	$("#loginok").click(function(){
 		var loginusername=$("#loginusername").val();
-		var loginuserpwd=$("#loginuserpwd").val();
+		var loginuserpwd=$("#userloginpassword").val();
 		if(!loginusername){
 			alert("写用户名");
 			return;
