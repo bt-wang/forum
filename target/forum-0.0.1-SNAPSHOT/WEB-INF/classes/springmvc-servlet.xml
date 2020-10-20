@@ -34,13 +34,13 @@
 
 	<!-- 2. 配置自定义类型转换器 -->
 	<!-- 配置自定义类型转换器 -->
-	<!-- <bean id="conversionService" -->
-	<!-- class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> -->
-	<!-- <property name="converters"> -->
-	<!-- <set> -->
-	<!-- <ref bean="dateConverter" /> -->
-	<!-- <ref bean="timestampConverter" /> -->
-	<!-- </set> -->
-	<!-- </property> -->
-	<!-- </bean> -->
+<!-- 	<bean id="conversionService" -->
+<!-- 		class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> -->
+<!-- 		<property name="converters"> -->
+<!-- 			<set> -->
+<!-- 				<ref bean="dateConverter" /> -->
+<!-- 				<ref bean="timestampConverter" /> -->
+<!-- 			</set> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
 </beans>

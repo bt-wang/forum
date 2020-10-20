@@ -20,7 +20,7 @@ $(function () {
                     $("<td></td>").html(userinfo.username).appendTo(oTr);
                     $("<td></td>").html(new Date(userinfo.userbirthday).format("yyyy-MM-dd")).appendTo(oTr);
                     $("<td></td>").html(userinfo.usersex).appendTo(oTr);
-					 $("<td></td>").html(userinfo.useremail).appendTo(oTr);
+					$("<td></td>").html(userinfo.useremail).appendTo(oTr);
                     $("<td></td>").html(new Date(userinfo.userregdate).format("yyyy-MM-dd")).appendTo(oTr);
                 
               

@@ -18,10 +18,12 @@ addZero(oMin) +':'+addZero(oSen);*/
     oTime = oYear +'-'+ addZero(oMonth) +'-'+ addZero(oDay);
     return oTime;
 }
+	$("#fuserregdate").html("");
 	$.post("/forum/logintime", null, function(data){
 		//alert("您上次登录的日期是"+data.userregdate+"。");
 		var dateTime = getMyDate(parseInt(data.userregdate));
-		alert("您上次登录的日期是"+dateTime+"。");
+		$("#fuserregdate").html(new Date(dateTime).format("yyyy-MM-dd"));
+		//alert("您上次登录的日期是"+dateTime+"。");
 	}, "json");
 
 
@@ -33,6 +35,10 @@ addZero(oMin) +':'+addZero(oSen);*/
 	
 	$("#fuserid").html("");
 	$("#fusername").html("");
+	$("#fuserbirthday").html("");
+	$("#fusersex").html("");
+	$("#fuseremail").html("");
+	
 	 $.post("/forum/getnowuser",null, function (data) {
 		 
 		 if (null!=data) {
@@ -42,7 +48,9 @@ addZero(oMin) +':'+addZero(oSen);*/
 		     //            $("#curid").val(data.userid);
 		     // 将当前用户的id写在页面上
 		     $("#fuserid").html(data.userid);
-
+			$("#fuserbirthday").html(new Date(data.userbirthday).format("yyyy-MM-dd"));
+			$("#fusersex").html(data.usersex);
+			$("#fuseremail").html(data.useremail);
 			  //将当前用户的头像打在页面上
 			  $("#head").attr("src",data.userimage);
 			  

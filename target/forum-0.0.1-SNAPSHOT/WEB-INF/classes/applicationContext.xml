@@ -14,33 +14,29 @@
 	<context:component-scan base-package="com.forum" />
 
 
-	<!-- 1. 整合MyBatis -->
+	<!-- 1. 整合MyBatis  -->
 	<!-- 1.1 配置数据源 -->
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName"
-			value="com.mysql.cj.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://localhost:3306/forum?useUnicode=true&amp;useSSL=false&amp;characterEncoding=utf-8&amp;serverTimezone=UTC" />
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/forum?useUnicode=true&amp;useSSL=false&amp;characterEncoding=utf-8&amp;serverTimezone=UTC" />
 
 		<property name="username" value="root" />
 		<property name="password" value="476671514" />
 	</bean>
 	<!-- 1.2 托管SQLSessionFactory -->
-	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 设置数据源 -->
 		<property name="dataSource" ref="dataSource" />
 		<!-- 设置bean别名, 所有的BO类需要放到该包下 -->
-		<property name="typeAliasesPackage"
-			value="com.forum.model.entity" />
+		<property name="typeAliasesPackage" value="com.forum.model.entity" />
 		<!-- 设置mappers位置 -->
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:com/forum/model/dao/*.xml</value>
 			</list>
 		</property>
-		<!-- 配置分页插件 -->
+ 		<!-- 配置分页插件 -->
 		<property name="plugins">
 			<array>
 				<bean class="com.github.pagehelper.PageInterceptor">
@@ -55,8 +51,7 @@
 	</bean>
 	<!-- 1.3 设置Dao扫描 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="sqlSessionFactoryBeanName"
-			value="sqlSessionFactory"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 		<!-- 设置Dao位置 -->
 		<property name="basePackage" value="com.forum.model.dao"></property>
 	</bean>
@@ -70,8 +65,7 @@
 	<!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
 
 	<!--配置事务增强处理，指定事务管理器 -->
-	<tx:advice id="txAdvice"
-		transaction-manager="transactionManager">
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<!-- service中哪些方法需要进行事务控制 -->
 			<tx:method name="add*" propagation="REQUIRED" />
@@ -90,8 +84,7 @@
 		<aop:pointcut id="interceptorPointCuts"
 			expression="execution(* com.forum.model.services..*.*(..))" />
 		<!--指定在poincut切入点应用txAdvice事务增强处理 -->
-		<aop:advisor advice-ref="txAdvice"
-			pointcut-ref="interceptorPointCuts" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="interceptorPointCuts" />
 	</aop:config>
 
 

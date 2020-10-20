@@ -15,11 +15,23 @@ $(function(){
 	        }
 	    })
 	});
-	
+	$("#registeremail").blur(function(){
+	    //验证用户名输入
+	    var registeremail = $(this).val();
+		var myReg=/^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
+	    if(myReg.test(registeremail)){
+	         $("#registeremailcheck").show().css("color","white").html("邮箱格式正确").fadeOut(2000);
+	    }
+	   
+	        else{
+	             $("#registeremailcheck").show().css("color","white").html("邮箱格式不正确").fadeOut(2000);
+	        }
+	   
+	});
 	
 	$("#loginok").click(function(){
 		var loginusername=$("#loginusername").val();
-		var loginuserpwd=$("#loginuserpwd").val();
+		var loginuserpwd=$("#userloginpassword").val();
 		if(!loginusername){
 			alert("写用户名");
 			return;
@@ -77,6 +89,7 @@ $(function(){
 		
 		var registeruserpwd=$("#registeruserpwd").val();
 		var registeragainuserpwd=$("#registeragainuserpwd").val();
+		var myReg=/^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
 		if(!registerusername){
 			alert("请输入用户名");
 			return;
@@ -93,9 +106,15 @@ $(function(){
 			alert("请输入邮箱");
 			return;
 		}
+		if(!myReg.test(registeremail)){
+		    alert("邮箱格式错误");
+		    return;
+		}
+		
 			$.post("/forum/register","username="+registerusername+"&userpassword="+registeruserpwd+"&userbirthday="+registeruserbirthday+"&usersex="+registersex+"&userimage="+registerFile+"&useremail="+registeremail,function(data){
-				 if(data == true){
+				 if(data){
 				 	alert("注册成功");
+					$("#tologin").click();
 				}
 				 else{
 					alert("注册失败");

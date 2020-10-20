@@ -1,18 +1,24 @@
-#resultdiv {
-	margin-top: 20px;
-	display: none;
+
+
+
+#resultdiv{
+    margin-top: 20px;
+    display: none;
 }
 
-#pagectrl {
-	font-size: 0.8em;
-	text-align: center;
-	display: none;
+#pagectrl{
+    font-size: 0.8em;
+    text-align: center;
+    display: none;
 }
 
-#gopage {
-	width: 30px;
+
+#gopage{
+    width: 30px;
 }
 
-#searchBtn {
-	display: none;
+#searchBtn{
+    display: none;
 }
+
+
